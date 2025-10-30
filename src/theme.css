@@ -1,0 +1,215 @@
+:root{
+  --bg: #f6f8fc;
+  --panel: #ffffff;
+  --card: #ffffff;
+  --muted: #64748b;
+  --text: #0f172a;
+
+  --primary: #1d4ed8;  /* azul */
+  --primary-20: rgba(29,78,216,.15);
+  --accent: #10b981;   /* verde */
+  --warn: #f59e0b;     /* ámbar */
+  --danger: #ef4444;   /* rojo */
+
+  --grid: rgba(0,0,0,.06);
+  --shadow: 0 8px 30px rgba(0,0,0,.08);
+
+  /* ---- Botones (tema claro) ---- */
+  --btn-bg: #ffffff;
+  --btn-text: #0f172a;
+  --btn-border: rgba(0,0,0,.12);
+  --btn-ghost-bg: #f5f7fb;
+  --btn-ghost-border: rgba(0,0,0,.10);
+  --ring: rgba(29,78,216,.25); /* halo azul para focus */
+}
+
+html,body,#root { height:100%; }
+body{
+  margin:0;
+  background: radial-gradient(1200px 800px at 10% -10%, #ffffff 0%, #f3f6ff 40%, #eef2f9 100%);
+  color: var(--text);
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.header{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom: 12px;
+}
+
+/* Badges (visibles y con Inicial Mayúscula) */
+.badge{
+  padding: 2px 10px; border-radius: 999px; font-size: 12px;
+  background: #f1f5ff; color: var(--text);
+  border: 1px solid rgba(0,0,0,.10);
+  text-transform: capitalize;
+}
+
+.panel{
+  background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.controls{
+  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+  padding: 12px; border-radius: 12px;
+  background: rgba(241,245,249,.85);
+}
+
+/* Inputs y botones (solo colores/estética) */
+.select, .input, .btn, input, select, button{
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  line-height: 1.1;
+  font: inherit;
+}
+
+/* Placeholders más suaves */
+.input::placeholder,
+input::placeholder{ color: #94a3b8; }
+
+/* Date inputs: texto oscuro e icono visible */
+.input[type="date"],
+input[type="date"]{
+  color: var(--text);
+  background: #ffffff;
+}
+input[type="date"]::-webkit-calendar-picker-indicator{
+  filter: none;           /* que no quede pálido en claro */
+  opacity: .9;
+  cursor: pointer;
+}
+input[type="date"]::-moz-focus-inner{ border:0; }
+
+/* Botones */
+.btn{
+  cursor:pointer;
+  box-shadow: 0 1px 2px rgba(182, 167, 167, 0.04);
+  transition: filter .15s ease, box-shadow .15s ease, transform .02s ease;
+}
+.btn:hover{ filter: brightness(1.02); }
+.btn:active{ transform: translateY(1px); }
+
+/* Asegurar botones de cabecera en claro */
+.header .btn{
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+}
+
+
+
+
+/* Primario (Aplicar/Calcular/Guardar…) */
+.btn.primary{
+  background: var(--primary);
+  color:#fff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(29,78,216,.18);
+}
+.btn.primary:hover{ filter: brightness(1.06); }
+.btn.primary:focus{ outline:0; box-shadow: 0 0 0 4px var(--ring); }
+
+/* Ghost / Secundario (Cambiar a modo demo, etc.) */
+.btn.ghost{
+  background: var(--btn-ghost-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-ghost-border);
+}
+.btn.ghost:hover{ filter: brightness(1.02); }
+.btn.ghost:focus{ outline:0; box-shadow: 0 0 0 4px rgba(15,23,42,.08); }
+
+/* Disabled */
+.btn:disabled, .btn[disabled]{
+  opacity:.55;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+
+.grid-4{ display:grid; grid-template-columns: repeat(4,1fr); gap:12px; }
+.grid-2-1{ display:grid; grid-template-columns: 2fr 1fr; gap:16px; }
+
+.card{
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+.card h3{ margin: 0 0 8px 0; font-weight: 600; letter-spacing:.2px; }
+
+.kpi{
+  display:flex; flex-direction:column; gap:4px;
+}
+.kpi .label{ font-size: 12px; color: var(--muted); }
+.kpi .value{ font-size: 22px; font-weight: 800; letter-spacing:.4px; }
+.kpi.ok .value{ color: var(--accent); }
+.kpi.warn .value{ color: var(--warn); }
+.kpi.bad .value{ color: var(--danger); }
+
+/* =========================
+   Modales (Ingreso / Revisar)
+   ========================= */
+
+/* Contenedor del modal (genérico): soporta distintos montajes */
+[role="dialog"],
+.modal,
+.dialog{
+  background: #ffffff !important;            /* panel claro */
+  color: var(--text) !important;
+  border: 1px solid rgba(0,0,0,.12) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18) !important;
+}
+
+/* Si usan .panel para el cuadro del modal */
+.panel.modal, .modal .panel, [role="dialog"].panel, .dialog .panel{
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18);
+}
+
+/* Controles dentro del modal en claro */
+[role="dialog"] .select, [role="dialog"] .input, [role="dialog"] .btn,
+.modal .select, .modal .input, .modal .btn,
+.dialog .select, .dialog .input, .dialog .btn{
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+}
+
+/* Secciones internas del modal (cajas) */
+[role="dialog"] .panel, .modal .panel, .dialog .panel{
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+/* Botón de cierre del modal: claro y visible */
+[role="dialog"] .btn.close, .modal .btn.close, .dialog .btn.close{
+  background: #ffffff;
+  color: var(--text);
+  border: 1px solid rgba(0,0,0,.12);
+}
+
+/* Titulares de sección dentro del modal */
+[role="dialog"] h3, .modal h3, .dialog h3{
+  color: var(--text);
+}
+
+/* Rejilla/delimitadores en tablas internas del modal */
+[role="dialog"] .grid, .modal .grid, .dialog .grid{
+  border-color: rgba(0,0,0,.06);
+}
+
+
