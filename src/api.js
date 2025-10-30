@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 // Ajusta si tu backend usa otro host/puerto
-const API_BASE = 'http://127.0.0.1:8000/api'
+const API_BASE = 'https://six-sigma-backend.onrender.com/api'
 
 export const tokens = {
   get access()  { return localStorage.getItem('access') || '' },
